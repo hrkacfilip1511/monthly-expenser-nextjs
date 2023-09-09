@@ -1,10 +1,7 @@
-import { useEffect } from "react";
 import MainNavigation from "../../MainNavigation/MainNavigation";
-import { getSession, useSession } from "next-auth/react";
-import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 const Layout = (props) => {
-  const [sessionName, setSessionName] = useState("");
   const { data: session, status } = useSession();
   return (
     <div>
