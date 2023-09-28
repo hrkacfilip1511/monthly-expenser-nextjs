@@ -88,3 +88,40 @@
 .navLink:hover {
   background-color: rgb(184, 123, 184);
 }
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in;
+}
+.menuOption {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 8px 0 0 8px;
+}
+
+.hideSidebar {
+  transform: translateX(-250px);
+  transition: transform 0.3s ease-in;
+}
+
+.menuBar {
+  width: 30px;
+  height: 1.5px;
+  background-color: #333;
+  margin: 2px 0;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.active .menuBar:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.active .menuBar:nth-child(2) {
+  opacity: 0;
+}
+
+.active .menuBar:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
