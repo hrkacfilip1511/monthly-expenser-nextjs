@@ -35,6 +35,13 @@ const handler = async (req, res) => {
       client.close();
       return;
     }
+    if (new Date(date).getDate() > new Date().getDate()) {
+      res.status(403).json({
+        message: "You can't add expense in the future!",
+      });
+      client.close();
+      return;
+    }
     if (!amount || parseFloat(amount) === 0) {
       res
         .status(403)

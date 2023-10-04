@@ -72,7 +72,7 @@
   flex-direction: column;
   background-color: rgb(35, 36, 35);
   color: white;
-  width: 250px;
+  width: 220px;
   height: 100vh;
 }
 .navLink {
@@ -102,7 +102,7 @@
 }
 
 .hideSidebar {
-  transform: translateX(-250px);
+  transform: translateX(-220px);
   transition: transform 0.3s ease-in;
 }
 

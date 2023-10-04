@@ -1,7 +1,7 @@
 import MonthlyOverviewItem from "../MonthlyOverviewItem/MonthlyOverviewItem";
 import classes from "./ExpensesMainInfo.module.css";
 
-const ExpensesMainInfo = () => {
+const ExpensesMainInfo = ({ expenseAmount }) => {
   return (
     <div className={classes.expensesMainInfo}>
       <MonthlyOverviewItem
@@ -13,7 +13,7 @@ const ExpensesMainInfo = () => {
       <MonthlyOverviewItem
         title={"Expense"}
         imageName={"wallet.png"}
-        value={1500}
+        value={expenseAmount}
         className={"expense"}
       />
       <MonthlyOverviewItem
