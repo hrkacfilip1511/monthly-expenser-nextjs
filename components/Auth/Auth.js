@@ -16,17 +16,14 @@ const Auth = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const nameRef = useRef();
+  const budgetRef = useRef();
   const submitFormHandler = async (e) => {
     e.preventDefault();
     const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
     const enteredName = !isLogin ? nameRef?.current?.value : "";
+    const enteredBudget = !isLogin ? budgetRef.current.value : 0;
 
-    const usersData = {
-      email: enteredEmail,
-      password: enteredPassword,
-      name: enteredName,
-    };
     if (isLogin) {
       const result = await signIn("credentials", {
         redirect: false,
@@ -37,6 +34,12 @@ const Auth = (props) => {
         router.replace("/");
       }
     } else {
+      const usersData = {
+        email: enteredEmail,
+        password: enteredPassword,
+        name: enteredName,
+        budget: enteredBudget,
+      };
       if (isCheckedTerms) {
         setErrorCheckBoxClass(false);
         props.onSignUp(usersData);
@@ -64,20 +67,26 @@ const Auth = (props) => {
           <input id="password" type="password" ref={passwordRef} />
         </div>
         {!isLogin && (
-          <div className={classes.checkBox}>
-            <input
-              id="checkedBox"
-              type="checkbox"
-              checked={isCheckedTerms}
-              onChange={() => setIsCheckedTerms((prev) => !prev)}
-            />
-            <label
-              htmlFor="checkedBox"
-              className={errorCheckBoxClass ? classes.errorMsg : null}
-            >
-              I accept all terms and conditions
-            </label>
-          </div>
+          <>
+            <div className={classes.budget}>
+              <label htmlFor="budget">Add your budget</label>
+              <input type="text" ref={budgetRef} id="budget" />
+            </div>
+            <div className={classes.checkBox}>
+              <input
+                id="checkedBox"
+                type="checkbox"
+                checked={isCheckedTerms}
+                onChange={() => setIsCheckedTerms((prev) => !prev)}
+              />
+              <label
+                htmlFor="checkedBox"
+                className={errorCheckBoxClass ? classes.errorMsg : null}
+              >
+                I accept all terms and conditions
+              </label>
+            </div>
+          </>
         )}
         <div className={classes.actions}>
           <button className={classes.submitBtn}>
